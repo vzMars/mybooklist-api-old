@@ -3,7 +3,10 @@ const passport = require('passport');
 
 module.exports = {
   authStatus: (req, res) => {
-    res.status(200).json('auth status');
+    const { id, email, userName } = req.user;
+    res.status(200).json({
+      user: { id, email, userName },
+    });
   },
   login: (req, res) => {
     res.status(200).json('login');
