@@ -3,6 +3,8 @@ const app = express();
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const connectDB = require('./config/database');
@@ -18,6 +20,16 @@ app.use(cors(corsOptions));
 
 // Database Connection
 connectDB();
+
+// Secure express app
+app.use(helmet());
+
+// Body parser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Logging
+app.use(morgan('dev'));
 
 // Sessions
 app.use(
