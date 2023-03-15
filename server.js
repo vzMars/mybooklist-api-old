@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const connectDB = require('./config/database');
+const authRoutes = require('./routes/auth');
 
 // Load config
 require('dotenv').config({ path: './config/.env' });
@@ -44,6 +45,9 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
