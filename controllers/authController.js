@@ -8,8 +8,29 @@ module.exports = {
       user: { id, email, userName },
     });
   },
-  login: (req, res) => {
-    res.status(200).json('login');
+  login: (req, res, next) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ error: 'Please complete all required fields.' });
+    }
+
+    passport.authenticate('local', (err, user, info) => {
+      if (err) return next(err);
+
+      if (!user) {
+        return res.status(400).json({ error: 'Incorrect email or password.' });
+      }
+
+      req.logIn(user, (err) => {
+        if (err) return next(err);
+        res.status(200).json({
+          user: { id: user.id, email: user.email, userName: user.userName },
+        });
+      });
+    })(req, res, next);
   },
   logout: (req, res, next) => {
     req.logout((err) => {
