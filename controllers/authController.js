@@ -11,8 +11,14 @@ module.exports = {
   login: (req, res) => {
     res.status(200).json('login');
   },
-  logout: (req, res) => {
-    res.status(200).json('logout');
+  logout: (req, res, next) => {
+    req.logout((err) => {
+      if (err) return next(err);
+      req.session.destroy();
+      res
+        .status(200)
+        .json({ success: true, message: 'Successfully logged out.' });
+    });
   },
   signup: async (req, res, next) => {
     const { email, userName, password } = req.body;
