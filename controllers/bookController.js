@@ -3,11 +3,9 @@ const BASEURL = 'https://openlibrary.org/search.json?q=';
 module.exports = {
   searchBooks: async (req, res) => {
     try {
-      const { query } = req.body;
-      const newQuery = query.replaceAll(' ', '+');
+      const query = req.params.query.replaceAll(' ', '+');
 
-      console.log(`${BASEURL}${newQuery}`);
-      const response = await fetch(`${BASEURL}${newQuery}`);
+      const response = await fetch(`${BASEURL}${query}`);
       const json = await response.json();
 
       res.status(200).json(json.docs);

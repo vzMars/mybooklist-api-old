@@ -5,6 +5,6 @@ const { ensureAuth } = require('../middleware/auth');
 
 router.use(ensureAuth);
 
-router.get('/search', bookController.searchBooks);
+router.get('/search/:query', bookController.searchBooks);
 
 module.exports = router;
