@@ -16,7 +16,7 @@ const BookSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['currently_reading', 'completed', 'dropped', 'plan_to_read'],
+    enum: ['reading', 'completed', 'plan_to_read'],
     required: true,
   },
 });
