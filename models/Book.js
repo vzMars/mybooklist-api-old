@@ -14,9 +14,10 @@ const BookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  authors: [String],
   status: {
     type: String,
-    enum: ['reading', 'completed', 'plan_to_read'],
+    enum: ['reading', 'completed', 'planning'],
     required: true,
   },
 });
