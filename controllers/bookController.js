@@ -1,3 +1,4 @@
+const Book = require('../models/Book');
 const BASEURL = 'https://books.googleapis.com/books/v1/volumes';
 
 module.exports = {
@@ -32,6 +33,31 @@ module.exports = {
       }
 
       res.status(200).json(json.volumeInfo);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
+  addBook: async (req, res) => {
+    try {
+      const { bookId, title, authors, status } = req.body;
+
+      const existingBook = await Book.findOne({
+        $and: [{ user: req.user.id }, { bookId }],
+      });
+
+      if (existingBook) {
+        throw Error('Already added book to your list.');
+      }
+
+      const book = await Book.create({
+        user: req.user.id,
+        bookId,
+        title,
+        authors,
+        status,
+      });
+
+      res.status(200).json(book);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
