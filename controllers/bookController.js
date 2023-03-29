@@ -32,7 +32,13 @@ module.exports = {
         throw Error('The book ID could not be found.');
       }
 
-      res.status(200).json(json.volumeInfo);
+      const book = await Book.findOne({
+        $and: [{ user: req.user.id }, { bookId: id }],
+      });
+
+      const status = book ? book.status : null;
+
+      res.status(200).json({ details: json.volumeInfo, status });
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
