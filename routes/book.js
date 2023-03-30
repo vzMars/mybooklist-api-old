@@ -5,6 +5,7 @@ const { ensureAuth } = require('../middleware/auth');
 
 router.use(ensureAuth);
 
+router.get('/', bookController.getBooks);
 router.get('/search/:query', bookController.searchBooks);
 router.get('/:id', bookController.bookDetails);
 router.post('/', bookController.addBook);

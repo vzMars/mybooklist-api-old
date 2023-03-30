@@ -2,6 +2,11 @@ const Book = require('../models/Book');
 const BASEURL = 'https://books.googleapis.com/books/v1/volumes';
 
 module.exports = {
+  getBooks: async (req, res) => {
+    const books = await Book.find().populate('user', 'userName');
+
+    res.status(200).json(books);
+  },
   searchBooks: async (req, res) => {
     try {
       const query = req.params.query.replaceAll(' ', '%20');
