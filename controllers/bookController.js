@@ -1,4 +1,5 @@
 const Book = require('../models/Book');
+const User = require('../models/User');
 const BASEURL = 'https://books.googleapis.com/books/v1/volumes';
 
 module.exports = {
@@ -46,6 +47,23 @@ module.exports = {
       res
         .status(400)
         .json({ error: 'Something went wrong. Please try again.' });
+    }
+  },
+  getProfile: async (req, res) => {
+    try {
+      const { userName } = req.params;
+      const user = await User.findOne({ userName }, 'userName -_id').collation({
+        locale: 'en',
+        strength: 2,
+      });
+
+      if (!user) {
+        throw Error('Profile not found.');
+      }
+
+      res.status(200).json(user.userName);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
     }
   },
   addBook: async (req, res) => {
