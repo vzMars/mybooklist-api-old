@@ -18,7 +18,6 @@ const BookSchema = new mongoose.Schema(
     authors: [String],
     cover: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
