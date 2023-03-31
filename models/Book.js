@@ -16,6 +16,10 @@ const BookSchema = new mongoose.Schema(
       required: true,
     },
     authors: [String],
+    cover: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
       enum: ['reading', 'completed', 'planning'],

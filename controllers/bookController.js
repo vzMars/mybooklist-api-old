@@ -68,7 +68,7 @@ module.exports = {
   },
   addBook: async (req, res) => {
     try {
-      const { bookId, title, authors, status } = req.body;
+      const { bookId, title, authors, cover, status } = req.body;
 
       const existingBook = await Book.findOne({
         $and: [{ user: req.user.id }, { bookId }],
@@ -83,6 +83,7 @@ module.exports = {
         bookId,
         title,
         authors,
+        cover,
         status,
       });
 
