@@ -57,4 +57,13 @@ module.exports = {
       res.status(400).json({ error: error.message });
     }
   },
+  getUsers: async (req, res) => {
+    try {
+      const users = await User.find().select('userName');
+
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
 };
