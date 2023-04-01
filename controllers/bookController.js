@@ -52,7 +52,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const { userName } = req.params;
-      const user = await User.findOne({ userName }, 'userName -_id').collation({
+      const user = await User.findOne({ userName }, 'userName').collation({
         locale: 'en',
         strength: 2,
       });
@@ -61,7 +61,12 @@ module.exports = {
         throw Error('Profile not found.');
       }
 
-      res.status(200).json(user.userName);
+      const books = await Book.find({ user: user }).populate(
+        'user',
+        'userName'
+      );
+
+      res.status(200).json({ userName: user.userName, books });
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
