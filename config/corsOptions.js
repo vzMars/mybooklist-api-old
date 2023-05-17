@@ -1,4 +1,4 @@
-const whitelist = ['http://localhost:3000', 'http://example1.com'];
+const whitelist = ['https://mybooklist-vzmars.netlify.app'];
 
 const corsOptions = {
   origin: (origin, callback) => {
