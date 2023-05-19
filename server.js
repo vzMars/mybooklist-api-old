@@ -11,10 +11,10 @@ const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 const bookRoutes = require('./routes/book');
 
-app.set('trust proxy', 1);
-
 // Load config
 require('dotenv').config({ path: './config/.env' });
+
+app.set('trust proxy', 1);
 
 // Passport config
 require('./config/passport')(passport);
@@ -43,8 +43,8 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DATABASE_URI }),
     cookie: {
-      secure: true,
       sameSite: 'none',
+      secure: true,
     },
   })
 );
