@@ -2,7 +2,7 @@
 
 The back-end for a full-stack social media web application that uses the Google Books API and allows users to search for books and add them to their list and users can also share their list with others.
 
-**Link to project:** https://mybooklist-vzmars.netlify.app
+**Link to project:** https://mybooklist.vzmars.com
 
 **Front-End:** https://github.com/vzMars/mybooklist
 
@@ -17,7 +17,7 @@ The back-end for this application was made using Node.js and Express. This appli
 
 ## Optimizations:
 
-I would like to add an error handler middleware to the back-end of this application because right now every error-related response that is sent over to the client is just a generic 400 Bad Request response. I would like to use an error handler middleware that can handle errors that have different responses. For example, if a user was trying to sign up with a username or email that has already been taken it would make sense to respond with a 409 Conflict response, or if a user is trying to log in and they have inputted an incorrect username or password the back-end should respond with a 401 Unauthorized response. I would also like to try converting this application from using JavaScript to TypeScript. It would also be nice to try using JWTs for authentication instead of using sessions since I have never tried JWTs before.
+I would like to add an error handler middleware to the back-end of this application because right now every error-related response that is sent over to the client is just a generic 400 Bad Request response. I would like to use an error handler middleware that can handle errors that have different responses. For example, if a user was trying to sign up with a username or email that has already been taken it would make sense to respond with a 409 Conflict response, or if a user is trying to log in and they have inputted an incorrect username or password the back-end should respond with a 401 Unauthorized response. I would also like to try converting this application from using JavaScript to TypeScript. It would also be nice to try using JWTs for authentication instead of using sessions because there is also an issue with the application not working properly on IOS/safari because cookies are not cross-domain compatible on those browsers. To fix this issue i would have switch to either using a token authenication system (JWTs) or
 
 ## Lessons Learned:
 

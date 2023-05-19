@@ -14,8 +14,6 @@ const bookRoutes = require('./routes/book');
 // Load config
 require('dotenv').config({ path: './config/.env' });
 
-app.set('trust proxy', 1);
-
 // Passport config
 require('./config/passport')(passport);
 
@@ -42,10 +40,6 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DATABASE_URI }),
-    cookie: {
-      sameSite: 'none',
-      secure: true,
-    },
   })
 );
 
