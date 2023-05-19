@@ -1,4 +1,7 @@
-const whitelist = ['https://mybooklist.vzmars.com'];
+const whitelist = [
+  'https://mybooklist.vzmars.com',
+  'https://www.mybooklist.vzmars.com',
+];
 
 const corsOptions = {
   origin: (origin, callback) => {
