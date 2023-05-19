@@ -18,7 +18,7 @@ require('dotenv').config({ path: './config/.env' });
 require('./config/passport')(passport);
 
 // Enable CORS
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Database Connection
 connectDB();
