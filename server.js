@@ -11,6 +11,8 @@ const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 const bookRoutes = require('./routes/book');
 
+app.set('trust proxy', 1);
+
 // Load config
 require('dotenv').config({ path: './config/.env' });
 
