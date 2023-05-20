@@ -24,7 +24,7 @@ I would like to add an error handler middleware to the back-end of this applicat
 With this application, I have learned how to separate my front-end and back-end and deploy both of them on different subdomains of the same domain for example:
 
 - `Front-End`: mybooklist.example.com
-- `Back-End`: api.example.com.
+- `Back-End`: api.mybooklist.example.com.
 
 Before deploying to different subdomains I was having issues with the API not working properly on IOS/Safari even though it worked on Chrome and Firefox. For example, when a user would log in the cookie that was sent by the back-end would not be set on the front-end and when the client refreshes the application the user would log off even though they were currently logged in. Both the front-end and back-end are deployed on render.com.
 
