@@ -6,8 +6,8 @@ The back-end for a full-stack social media web application that uses the Google 
 
 **Front-End:** https://github.com/vzMars/mybooklist
 
-![alt text](https://i.imgur.com/bxRXgX2.png)
-![alt text](https://i.imgur.com/JCjjs0B.png)
+![alt text](https://i.imgur.com/XvYLDkI.png)
+![alt text](https://i.imgur.com/IoTMXdM.png)
 
 ## How It's Made:
 
